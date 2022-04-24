@@ -162,8 +162,7 @@ function displayMenu(menuToDisplay){
     const newMenu = menuToDisplay.map(function(item){
         return `
             <artcile class="item-container">
-                <h3 class="item-header"></h3>
-                <div class="item-image-container">
+                 <div class="item-image-container">
                     <img class="item-image" src="${item.img}" alt="${item.description}">
                 </div>
                 <div class="item-detail-container">
