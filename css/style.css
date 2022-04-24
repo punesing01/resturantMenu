@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Oxygen&family=Oxygen+Mono&family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital@1&display=swap');
+
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+html{
+    box-sizing: inherit;
+}
+
+body {
+    margin:0;
+    padding: 0;
+    font-family: 'Red Hat Display', sans-serif;
+    color: black;
+    background-color: #E4EBF2;
+}
+
+h1 {
+    text-align: center;
+    margin: 3rem 0;
+    text-decoration: underline;
+    text-decoration-color: #A6874E;
+    text-decoration-style: double;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style-type: none;
+    justify-content: center;
+    padding: 0;    
+}
+
+nav li a {
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    color: #A6874E;
+    font-size:1rem;
+}
+
+.menu-section{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.item-header {
+    margin:0;   
+}
+
+.item-image{
+    width: 300px;
+    border:4px solid #A6874E;
+}
+
+.item-image-container {
+    text-align: center;
+}
+
+.item-text{
+    display: flex;
+    justify-content: space-around;
+    color: #390D02;    
+    align-items: flex-start;
+}
+
+@media(min-width:850px){
+    h1 {
+        margin: 5rem 0;
+    }
+
+    nav {
+        margin-bottom: 4rem;
+    }
+
+    nav li a {
+        font-size: 1.4rem;
+        padding:10px;
+        background-color: white;
+        border: 1px solid #A6874E;
+        border-radius: 10px;
+    }
+
+    nav li a:hover,.active{
+        color: white;
+        background-color: #390D02;
+    }
+
+    .menu-section{
+        display: flex;
+        gap:5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .item-container{
+        display: flex;
+        justify-content: center;
+        gap: 0.6rem;
+    }
+
+    .item-detail-container{
+        flex-basis: 30%;
+    }
+
+    .item-image-container{
+        height: 195px;
+     }
+
+    .item-image{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border:5px solid #A6874E;
+    }
+
+    .item-text p:first-of-type{
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: black;
+        margin: 0;
+    }
+
+    .item-text p:nth-of-type(2){
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #A6874E;
+        margin: 0;
+    }
+
+    .item-desc{
+        width: 200px;
+     }
+}
