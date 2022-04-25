@@ -178,3 +178,12 @@ function displayMenu(menuToDisplay){
     });
     menuItems.innerHTML = newMenu.join('');
 }
+
+fetch('nav.html')
+.then(res => res.text())
+.then(text => {
+    let oldElement = document.querySelector('#nav-placeholder');
+    let newElement = document.createElement('div');
+    newElement.innerHTML = text;
+    oldElement.parentNode.replaceChild(newElement,oldElement);
+});

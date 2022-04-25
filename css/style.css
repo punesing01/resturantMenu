@@ -38,7 +38,7 @@ nav ul {
     padding: 0;    
 }
 
-nav li a {
+.menu-bar nav li a {
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
     color: #A6874E;
@@ -87,20 +87,21 @@ nav li a {
 @media(min-width:850px){
     h1 {
         margin: 5rem 0;
+        padding: 1rem 0 0 0 ;
     }
 
-    nav {
+    .menu-bar nav {
         margin-bottom: 4rem;
     }
 
-    nav li a {
+    .menu-bar nav li a {
         font-size: 1.2rem;
         padding:8px;
         background-color: white;
         border: 1px solid #A6874E;
     }
 
-    nav li a:hover{
+    .menu-bar nav li a:hover{
         color: white;
         background-color: #390D02;
     }
