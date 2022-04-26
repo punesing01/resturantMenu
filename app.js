@@ -194,7 +194,8 @@ fetch('nav.html')
     newElement.innerHTML = text;
     oldElement.parentNode.replaceChild(newElement,oldElement);
     const modal = document.querySelector('#modal');
- 
+    const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
+    const cart = document.querySelector('.modal-bar-list li:last-of-type div');
     const closeButton = document.createElement('div');
     closeButton.innerText = 'x';
     closeButton.classList.add('close-button');
@@ -233,6 +234,12 @@ fetch('nav.html')
 
     closeButton.addEventListener('click',function(){
         sideModal.classList.remove('active');
+    });
+
+    orderNow.addEventListener('click',function(event){
+        console.log('Order now');
+        event.target.style.display='none';
+        cart.style.display='inline';
     });
 });
 
