@@ -138,6 +138,13 @@ const menu = [
 
 const menuItems = document.querySelector('.menu-section');
 const menuOptions = document.querySelectorAll('.menu-bar nav li a');
+const navSideModal = document.querySelector('#side-modal');
+const section = document.querySelector('section');
+const menuHeader = document.querySelector('h1');
+const navBar = document.querySelector('aside:nth-of-type(1)');
+
+let sideModal;
+
 
 window.addEventListener('DOMContentLoaded',function(){
      displayMenu(menu);
@@ -186,4 +193,54 @@ fetch('nav.html')
     let newElement = document.createElement('div');
     newElement.innerHTML = text;
     oldElement.parentNode.replaceChild(newElement,oldElement);
+    const modal = document.querySelector('#modal');
+ 
+    const closeButton = document.createElement('div');
+    closeButton.innerText = 'x';
+    closeButton.classList.add('close-button');
+ 
+    sideModal = document.createElement('div');
+    const modalList = `<aside>
+                        <ul class="side-bar-list">
+                            <li>
+                            <a>Menu</a>
+                            </li>
+                            <li>
+                            <a>Location</a>
+                            </li>
+                            <li>
+                            <a>About</a>
+                            </li>
+                            <li>
+                            <a>Order Now</a>
+                            </li>
+                        </ul></aside>`
+    sideModal.innerHTML = modalList;
+    sideModal.append(closeButton);
+    const overlay = document.createElement('div');
+    overlay.style.display='none';
+    sideModal.append(overlay);
+
+    modal.addEventListener('click',function(){
+        console.log('modal has been clicked!');
+        overlay.style.display='block';
+
+        closeButton.style.display='block';
+        sideModal.classList.add('side-modal');
+        sideModal.classList.toggle('active');
+        navSideModal.append(sideModal);
+    });
+
+    closeButton.addEventListener('click',function(){
+        sideModal.classList.remove('active');
+    });
 });
+
+section.addEventListener('click',function(){
+    sideModal.classList.remove('active');
+});
+
+menuHeader.addEventListener('click',function(){
+    sideModal.classList.remove('active');
+});
+
