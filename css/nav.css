@@ -109,6 +109,8 @@ aside {
       padding: 0 2.42rem;
       color: aliceblue;
       display: none;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .cart svg {
@@ -116,4 +118,10 @@ aside {
       height: 30px;
       fill: maroon;
     }
+
+    /*.close-cart-button{
+      position: absolute;
+      right: 6.8rem;
+      top: 4rem;
+    }*/
   }

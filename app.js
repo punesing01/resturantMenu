@@ -145,7 +145,6 @@ const navBar = document.querySelector('aside:nth-of-type(1)');
 
 let sideModal;
 
-
 window.addEventListener('DOMContentLoaded',function(){
      displayMenu(menu);
 });
@@ -168,6 +167,7 @@ Array.from(menuOptions).forEach(function(menuBarItem){
 function displayMenu(menuToDisplay){
     const newMenu = menuToDisplay.map(function(item){
         return `
+        <div>
             <artcile class="item-container">
                  <div class="item-image-container">
                     <img class="item-image" src="${item.img}" alt="${item.description}">
@@ -181,9 +181,26 @@ function displayMenu(menuToDisplay){
                         <p>${item.text}</p>
                     </div>
                 </div>
-               </artcile>`;
+               </artcile>
+                <div class="counter-container">
+                        <div class="container">
+                            <div class="item">-</div>
+                            <div class="item count">0</div>
+                            <div class="item">+</div>
+                        </div> 
+                        <button class="add-button">Add to Cart</button>
+                </div>
+        </div>`;
     });
+   
     menuItems.innerHTML = newMenu.join('');
+
+    /*Check if the cart is opened previously*/
+    const cart =  document.querySelector('.cart');
+    if(cart!==null && cart.style.display==='flex'){
+        showOrHideCounters('flex');
+        scanForCounters();
+    } else console.log('cart is not yet opened');   
 }
 
 fetch('nav.html')
@@ -197,6 +214,8 @@ fetch('nav.html')
     const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
     const cart = document.querySelector('.modal-bar-list li:last-of-type div');
     const closeButton = document.createElement('div');
+    
+
     closeButton.innerText = 'x';
     closeButton.classList.add('close-button');
  
@@ -237,9 +256,8 @@ fetch('nav.html')
     });
 
     orderNow.addEventListener('click',function(event){
-        console.log('Order now');
-        event.target.style.display='none';
-        cart.style.display='inline';
+        showOrHideCounters('flex');
+        scanForCounters();
     });
 });
 
@@ -251,3 +269,66 @@ menuHeader.addEventListener('click',function(){
     sideModal.classList.remove('active');
 });
 
+
+function scanForCounters(){
+    const plus = document.querySelectorAll('.container div:nth-of-type(3)');
+    const minus = document.querySelectorAll('.container div:nth-of-type(1)');
+    const count = document.querySelectorAll('.container div:nth-of-type(2)');
+
+    const addButtons = document.querySelectorAll('.add-button');
+    Array.from(plus).forEach(function(plusButton,index){
+        plusButton.addEventListener('click',function(){
+            console.log('plus',index);
+            updateCount('+',index);
+        });
+    });
+
+    Array.from(minus).forEach(function(minusButton,index){
+        minusButton.addEventListener('click',function(){
+            console.log('minus');
+            updateCount('-',index);
+        });
+    });
+
+    function updateCount(operation,index){
+    let counter = parseInt(count[index].innerText);
+    if(operation === '+'){
+        counter++;
+    } else{ 
+        if(counter > 0){
+        counter--;
+        }
+    }
+    count[index].innerText=counter;
+    }
+
+    const closeCart = document.querySelector('.cart > div');
+
+    closeCart.addEventListener('click',function(){
+        console.log('Close cart');
+        showOrHideCounters('none');
+    });
+}
+
+function showOrHideCounters(counterStatus){
+    const container = document.querySelectorAll('.container');
+    const counterContainer = document.querySelectorAll('.counter-container');
+    const cart =  document.querySelector('.cart');
+    const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
+
+    cart.style.display= counterStatus;
+    if(cart.style.display === 'flex'){
+        orderNow.style.display='none';
+    } else if(cart.style.display='none'){
+        orderNow.style.display='flex';
+    }else orderNow.style.display=counterStatus;
+
+
+    Array.from(counterContainer).forEach(function(counter){
+        counter.style.display=counterStatus;
+    });
+    
+    Array.from(container).forEach(function(item){
+        item.style.display=counterStatus;
+    });
+}

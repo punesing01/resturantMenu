@@ -190,4 +190,37 @@ nav ul {
          padding: 0;
          text-align: left;
      }
+
+     .counter-container {
+        display:none;
+        justify-content: center;
+        margin: 1rem;
+     }
+
+    .container {
+        display:none;
+        width:90px;
+        border: 2px solid #390D02;
+      }
+      
+      .item {
+         flex-basis:33.33%;
+         text-align:center;
+         background-color: #E8DEAA;
+         color: maroon;
+         font-size: larger;
+       }
+      
+       .count {
+         background-color:white;
+         color: #390D02;
+       }
+
+       .add-button{
+        margin-left:1rem;
+        font-family: 'Red Hat Display', sans-serif;
+        background-color: maroon;
+        color: white;
+        width:6rem;
+   }
 }
