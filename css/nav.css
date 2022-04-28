@@ -37,6 +37,7 @@ aside nav {
     margin-top:1.2rem;
     background: rgb(241,232,193);
     background: linear-gradient(90deg, rgba(241,232,193,1) 9%, rgba(166,135,78,1) 85%);
+    box-shadow: 5px 5px 5px black;
   }
 
 .logo-container{
@@ -72,6 +73,10 @@ aside {
       text-align: left;
     }
 
+    h3:hover, h3:focus{
+      color: orangered;
+    }
+
     #modal {
       display: none;
     }
@@ -83,6 +88,11 @@ aside {
       justify-content:flex-end;
       list-style-type:none;
       align-items: center;
+      /*padding-bottom: 1rem;*/
+    }
+    
+    .modal-bar-list li:nth-of-type(6) {
+      padding-bottom: 1rem;
     }
     
     .nav-bar-links {
@@ -98,6 +108,7 @@ aside {
       padding: 10px;
       background-color: aliceblue;
       color: black;
+      box-shadow: 5px 5px 5px black;
     }
   
     .order-now:hover {

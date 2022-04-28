@@ -68,7 +68,7 @@ nav ul {
 
 .item-image{
     width: 300px;
-    border:4px solid #A6874E;
+    /*border:4px solid #A6874E;*/
 }
 
 .item-image-container {
@@ -126,7 +126,8 @@ nav ul {
         font-size: 1.2rem;
         padding:8px;
         background-color: white;
-        border: 1px solid #A6874E;
+        /*border: 1px solid #A6874E;*/
+        box-shadow: 2px 2px 3px black;
     }
 
     .menu-bar nav li a:hover{
@@ -145,7 +146,13 @@ nav ul {
         display: flex;
         justify-content: space-between;
         gap: 0.6rem;
-        flex-basis:40%
+        flex-basis:40%;
+        border: 1px solid gray;
+        box-shadow: 10px 5px 5px lightslategray;
+    }
+
+    .item-container:hover{
+        box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.673);
     }
 
     .item-detail-container{
@@ -160,23 +167,24 @@ nav ul {
     .item-image{
         width: 100%;
         height: 100%;
-        border:5px solid #A6874E;
+        
     }
 
     .item-text{
-        justify-content: space-between;
+        /*justify-content: space-between;*/
+        margin: 5px;
     }
 
     .item-text p:first-of-type{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
         color: black;
         margin: 0;
     }
 
     .item-text p:nth-of-type(2){
-        font-size: 1.2rem;
-        font-weight: bold;
+        font-size: 1rem;
+        font-weight: bolder;
         color: #A6874E;
         margin: 0;
     }
@@ -187,7 +195,7 @@ nav ul {
      }
 
      .item-desc p {
-         padding: 0;
+         padding: 0 5px;
          text-align: left;
      }
 
@@ -200,16 +208,18 @@ nav ul {
     .container {
         display:none;
         width:90px;
-        border: 2px solid #390D02;
+        border: 1px solid black;
+        box-shadow: 1px 1px 1px black;
       }
       
       .item {
          flex-basis:33.33%;
          text-align:center;
-         background-color: #E8DEAA;
-         color: maroon;
+         background-color: #A6874E;
+         color: white;
          font-size: larger;
        }
+ 
       
        .count {
          background-color:white;
@@ -217,10 +227,18 @@ nav ul {
        }
 
        .add-button{
-        margin-left:1rem;
-        font-family: 'Red Hat Display', sans-serif;
-        background-color: maroon;
-        color: white;
-        width:6rem;
-   }
+            margin-left:1rem;
+            font-family: 'Red Hat Display', sans-serif;
+            background-color: white;
+            color: #A6874E;
+            width:6rem;
+            border: none;
+            font-size: large;
+            box-shadow: 2px 2px 2px black;
+        }
+
+        .add-button:hover{
+            background-color: #390D02;
+            color: white;
+        }
 }

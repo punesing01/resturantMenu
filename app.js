@@ -10,7 +10,7 @@ const menu = [
     {
         id:2,
         category:'breakfast',
-        description: 'Avocado egg sandwitch',
+        description: 'Egg sandwitch',
         price:18,
         img: 'imgs/avocado_egg_sandwitch.jpg',
         text:'Fresh avocado sandwitch with a tiny bit of mayonnaise on top of soft boiled eggs, celery, lemon juice, and herbs'
@@ -21,7 +21,7 @@ const menu = [
         description: 'Egg muffin',
         price:15,
         img: 'imgs/egg_muffin.jpg',
-        text:'Our Egg McMuffin sandwich is an excellent source of protein. We place a freshly cracked Grade A egg on a toasted English Muffin topped with real butter and add lean Canadian bacon and melty American cheese. '
+        text:'This is an excellent source of protein. We place a freshly cracked Grade A egg on a toasted English Muffin topped with real butter and add lean Canadian bacon and melty American cheese. '
 
     },
     {
@@ -30,7 +30,7 @@ const menu = [
         description: 'Beef sandwitch',
         price:20,
         img: 'imgs/beef_sandwitch.jpg',
-        text:'Beef up your dinnertime with Italian Beef Sandwiches. Topped with drained giardiniera and shredded cheese, these Italian Beef Sandwiches are delicious and ready in under a half-an-hour.'
+        text:'Enjoy lunch with Italian Beef Sandwiches. Topped with drained giardiniera and shredded cheese, these Italian Beef Sandwiches are delicious and ready in under a half-an-hour.'
     },
     {
         id:13,
@@ -89,7 +89,7 @@ const menu = [
     }, {
         id:25,
         category:'breakfst',
-        description: 'Oatmeal with greek yogurt',
+        description: 'Oatmeal yogurt',
         price:12,
         img: 'imgs/oatmeal_greek_yogurt.jpg',
         text:'A blend of rolled and steel-cut oats with dried fruit, a nut medley and brown sugar as optional toppings. Hearty. Traditional. Classic.- VEGETARIAN'
@@ -113,7 +113,7 @@ const menu = [
     {
         id:33,
         category:'lunch',
-        description: 'Roasted pepper Soup',
+        description: 'Pepper Soup',
         price:10,
         img: 'imgs/soup.jpg',
         text:'A rich flavoured soup made with sweet, red peppers, garlic, sun dried tomatoes topped with  homemade basil pesto and a creme fraiche swirl.'
@@ -124,7 +124,7 @@ const menu = [
         description: 'Spaghetti',
         price:18,
         img: 'imgs/spegattie.jpg',
-        text:'Spaghetti, hands down. Served with a simple salad of spring vegetables and finish with a creamy chocolate treat for a kid-friendly lunch menu that has plenty of grown-up appeal.'
+        text:'Served with a simple salad of spring vegetables and finish with a creamy chocolate treat for a kid-friendly lunch menu that has plenty of grown-up appeal.'
     },
     {
         id:35,
@@ -142,6 +142,10 @@ const navSideModal = document.querySelector('#side-modal');
 const section = document.querySelector('section');
 const menuHeader = document.querySelector('h1');
 const navBar = document.querySelector('aside:nth-of-type(1)');
+//const plus = document.querySelectorAll('.container div:nth-of-type(3)');
+////const minus = document.querySelectorAll('.container div:nth-of-type(1)');
+//const count = document.querySelectorAll('.container div:nth-of-type(2)');
+let plus, minus, count;
 
 let sideModal;
 
@@ -188,7 +192,7 @@ function displayMenu(menuToDisplay){
                             <div class="item count">0</div>
                             <div class="item">+</div>
                         </div> 
-                        <button class="add-button">Add to Cart</button>
+                        <button class="add-button">Add</button>
                 </div>
         </div>`;
     });
@@ -199,66 +203,66 @@ function displayMenu(menuToDisplay){
     const cart =  document.querySelector('.cart');
     if(cart!==null && cart.style.display==='flex'){
         showOrHideCounters('flex');
-        scanForCounters();
+        //scanForCounters();
     } else console.log('cart is not yet opened');   
 }
 
-fetch('nav.html')
+/*fetch('nav.html')
 .then(res => res.text())
 .then(text => {
     let oldElement = document.querySelector('#nav-placeholder');
     let newElement = document.createElement('div');
     newElement.innerHTML = text;
     oldElement.parentNode.replaceChild(newElement,oldElement);
-    const modal = document.querySelector('#modal');
-    const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
-    const cart = document.querySelector('.modal-bar-list li:last-of-type div');
-    const closeButton = document.createElement('div');
-    
-
-    closeButton.innerText = 'x';
-    closeButton.classList.add('close-button');
  
-    sideModal = document.createElement('div');
-    const modalList = `<aside>
-                        <ul class="side-bar-list">
-                            <li>
-                            <a>Menu</a>
-                            </li>
-                            <li>
-                            <a>Location</a>
-                            </li>
-                            <li>
-                            <a>About</a>
-                            </li>
-                            <li>
-                            <a>Order Now</a>
-                            </li>
-                        </ul></aside>`
-    sideModal.innerHTML = modalList;
-    sideModal.append(closeButton);
-    const overlay = document.createElement('div');
-    overlay.style.display='none';
-    sideModal.append(overlay);
+});*/
+const modal = document.querySelector('#modal');
+const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
+const cart = document.querySelector('.modal-bar-list li:last-of-type div');
+const closeButton = document.createElement('div');
 
-    modal.addEventListener('click',function(){
-        console.log('modal has been clicked!');
-        overlay.style.display='block';
+closeButton.innerText = 'x';
+closeButton.classList.add('close-button');
 
-        closeButton.style.display='block';
-        sideModal.classList.add('side-modal');
-        sideModal.classList.toggle('active');
-        navSideModal.append(sideModal);
-    });
+sideModal = document.createElement('div');
+const modalList = `<aside>
+                    <ul class="side-bar-list">
+                        <li>
+                        <a>Menu</a>
+                        </li>
+                        <li>
+                        <a>Location</a>
+                        </li>
+                        <li>
+                        <a>About</a>
+                        </li>
+                        <li>
+                        <a>Order Now</a>
+                        </li>
+                    </ul></aside>`
+sideModal.innerHTML = modalList;
+sideModal.append(closeButton);
+const overlay = document.createElement('div');
+overlay.style.display='none';
+sideModal.append(overlay);
 
-    closeButton.addEventListener('click',function(){
-        sideModal.classList.remove('active');
-    });
+modal.addEventListener('click',function(){
+    console.log('modal has been clicked!');
+    overlay.style.display='block';
 
-    orderNow.addEventListener('click',function(event){
-        showOrHideCounters('flex');
-        scanForCounters();
-    });
+    closeButton.style.display='block';
+    sideModal.classList.add('side-modal');
+    sideModal.classList.toggle('active');
+    navSideModal.append(sideModal);
+});
+
+closeButton.addEventListener('click',function(){
+    sideModal.classList.remove('active');
+});
+
+orderNow.addEventListener('click',function(event){
+    showOrHideCounters('flex');
+    scanForCounters();
 });
 
 section.addEventListener('click',function(){
@@ -269,44 +273,46 @@ menuHeader.addEventListener('click',function(){
     sideModal.classList.remove('active');
 });
 
-
-function scanForCounters(){
-    const plus = document.querySelectorAll('.container div:nth-of-type(3)');
-    const minus = document.querySelectorAll('.container div:nth-of-type(1)');
-    const count = document.querySelectorAll('.container div:nth-of-type(2)');
-
-    const addButtons = document.querySelectorAll('.add-button');
-    Array.from(plus).forEach(function(plusButton,index){
-        plusButton.addEventListener('click',function(){
-            console.log('plus',index);
-            updateCount('+',index);
-        });
-    });
-
-    Array.from(minus).forEach(function(minusButton,index){
-        minusButton.addEventListener('click',function(){
-            console.log('minus');
-            updateCount('-',index);
-        });
-    });
-
-    function updateCount(operation,index){
+function updateCount(operation,index){
+    console.log('Updating count');
+    //console.log(count);
     let counter = parseInt(count[index].innerText);
     if(operation === '+'){
         counter++;
     } else{ 
         if(counter > 0){
-        counter--;
+            counter--;
         }
     }
+    console.log('counter=',counter);
     count[index].innerText=counter;
-    }
+}
 
-    const closeCart = document.querySelector('.cart > div');
+const closeCart = document.querySelector('.cart > div');
 
-    closeCart.addEventListener('click',function(){
-        console.log('Close cart');
-        showOrHideCounters('none');
+closeCart.addEventListener('click',function(){
+    console.log('Close cart');
+     showOrHideCounters('none');
+});
+
+function scanForCounters(){
+    console.log('display counters');
+    plus = document.querySelectorAll('.container div:nth-of-type(3)');
+    minus = document.querySelectorAll('.container div:nth-of-type(1)');
+    count = document.querySelectorAll('.container div:nth-of-type(2)');
+
+     Array.from(plus).forEach(function(plusButton,index){
+        plusButton.addEventListener('click',function(){
+            console.log('adding for button',index);
+            updateCount('+',index);
+        });
+    });
+    
+    Array.from(minus).forEach(function(minusButton,index){
+        minusButton.addEventListener('click',function(){
+            console.log('minus');
+            updateCount('-',index);
+        });
     });
 }
 
@@ -318,9 +324,13 @@ function showOrHideCounters(counterStatus){
 
     cart.style.display= counterStatus;
     if(cart.style.display === 'flex'){
+        console.log('display cart');
+        console.log('hide order now');
         orderNow.style.display='none';
     } else if(cart.style.display='none'){
         orderNow.style.display='flex';
+        console.log('display order now');
+        resetCount();
     }else orderNow.style.display=counterStatus;
 
 
@@ -331,4 +341,19 @@ function showOrHideCounters(counterStatus){
     Array.from(container).forEach(function(item){
         item.style.display=counterStatus;
     });
+}
+
+function setCartStatus(status){
+    const cart =  document.querySelector('.cart');
+    cart.style.display= status;
+}
+
+function resetCount(){
+    console.log('reseting counter');
+     Array.from(count).forEach(counter => {
+        counter.innerText='0';
+    });   
+    Array.from(count).forEach(counter => {
+        console.log(counter.innerText);
+    });   
 }
