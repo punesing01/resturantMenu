@@ -191,40 +191,47 @@ function displayMenu(menuToDisplay){
     menuItems.innerHTML = newMenu.join('');
 }
 
-const modal = document.querySelector('#modal');
+const burgerMenu = document.querySelector('#burger-menu');
 const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
 const cart = document.querySelector('.modal-bar-list li:last-of-type div');
-const closeButton = document.createElement('div');
-
-closeButton.innerText = 'x';
-closeButton.classList.add('close-button');
 
 sideModal = document.createElement('div');
-const modalList = `<aside>
-                    <ul class="side-bar-list">
-                        <li>
-                        <a>Menu</a>
-                        </li>
-                        <li>
-                        <a>Location</a>
-                        </li>
-                        <li>
-                        <a>About</a>
-                        </li>
-                        <li>
-                        <a>Order Now</a>
-                        </li>
-                    </ul></aside>`
+const modalList = `
+                <div class="side-modal-container">
+                    <div class="side-modal-content">
+                        <span class="side-modal-close-button">&times;</span>
+                        <div class="side-bar-list-container">
+                            <ul class="side-bar-list">
+                                <li>
+                                    <a>Menu</a>
+                                </li>
+                                <li>
+                                    <a>Location</a>
+                                </li>
+                                <li>
+                                    <a>About</a>
+                                </li>
+                                <li>
+                                    <a>Order Now</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>`;
+
 sideModal.innerHTML = modalList;
-sideModal.append(closeButton);
+navSideModal.append(sideModal);
+
+/*sideModal.innerHTML = modalList;
 const overlay = document.createElement('div');
 overlay.style.display='none';
 sideModal.append(overlay);
 
+const closeButton = document.querySelector('.close-button');
+
 modal.addEventListener('click',function(){
     console.log('modal has been clicked!');
     overlay.style.display='block';
-
     closeButton.style.display='block';
     sideModal.classList.add('side-modal');
     sideModal.classList.toggle('active');
@@ -233,19 +240,28 @@ modal.addEventListener('click',function(){
 
 closeButton.addEventListener('click',function(){
     sideModal.classList.remove('active');
+});*/
+
+const sideModalCloseButton = document.querySelector('.side-modal-close-button');
+const sideModalContainer = document.querySelector('.side-modal-container');
+
+sideModalCloseButton.addEventListener('click',function(){
+    sideModalContainer.style.display='none';
+});
+
+burgerMenu.addEventListener('click',function(){
+    sideModalContainer.style.display='flex';
+});
+
+window.addEventListener('click',function(event){
+    if(event.target == sideModalContainer){
+            sideModalContainer.style.display='none';
+    }
 });
 
 orderNow.addEventListener('click',function(event){
     console.log('Order now');
     orderModal.style.display='block';
-});
-
-section.addEventListener('click',function(){
-    sideModal.classList.remove('active');
-});
-
-menuHeader.addEventListener('click',function(){
-    sideModal.classList.remove('active');
 });
 
 orderModalCloseButton.addEventListener('click',function(){

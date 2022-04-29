@@ -14,7 +14,7 @@ h3 {
   color: brown;
 }
 
-#modal {
+#burger-menu {
   justify-content: flex-end;
   width:40px;
   display:flex;
@@ -22,7 +22,7 @@ h3 {
   flex-direction:column;
 }
 
-.modal-bar {
+.burger-menu-bar {
   background-color: white;
   height: 0.9rem;
   margin-bottom: 7px;
@@ -64,6 +64,28 @@ aside {
   aside nav ul {
     display: none;
   }
+
+  .side-modal-container{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.673);
+}
+
+.side-modal-content{
+    width: 60%;
+    background-color: #f1e8c1;
+    height: 100%;
+    animation-name: side-bar-fade-in;
+    animation-duration: 1s;
+}
+
+.side-bar-list-container{
+    height: 100%;
+}
  
   .side-bar-list{
     list-style-type:none;
@@ -73,8 +95,24 @@ aside {
     flex-direction: column;
     align-items: center;
     gap:2rem;
-    padding: 2rem 0; 
+    /*padding: 2rem 0; */
+    height: 100%;
   }
+
+  .side-bar-list a{
+    color:maroon;
+  }
+
+  .side-modal-close-button{
+    font-size: 3rem;
+    float: right;
+    padding: 20px;
+    background-color: whitesmoke;
+    color: lightgrey;
+    cursor: pointer;
+  }
+
+
 
   @media(min-width:911px){
     h3 {
@@ -86,7 +124,7 @@ aside {
       color: orangered;
     }
 
-    #modal {
+    #burger-menu {
       display: none;
     }
 
@@ -111,7 +149,7 @@ aside {
       flex-basis: 0;
     }
     
-    .modal-bar-list li:nth-of-type(6) {
+    .burger-menu-bar-list li:nth-of-type(6) {
       padding-bottom: 1rem;
     }
     
@@ -156,4 +194,9 @@ aside {
       right: 6.8rem;
       top: 4rem;
     }*/
+  }
+
+  @keyframes side-bar-fade-in{
+    from{opacity: 0;}
+    top { opacity: 1;}
   }
