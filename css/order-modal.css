@@ -1,0 +1,40 @@
+@media(min-width:911px){
+    .order-modal-container{
+        display:none;
+        position: fixed;
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+        background-color: rgb(0,0,0,0.8);
+    }
+
+    .order-modal-content{
+        width:80%;
+        margin:10% auto;
+        background-color: #E4EBF2;
+        padding:2rem;
+        overflow: auto;
+        animation-name: order-modal-show;
+        animation-duration: 2s;
+    }
+
+    .order-modal-close{
+        float:right;
+        color: #ccc;
+        font-size:2rem;
+    }
+
+    .order-modal-close:hover{
+        cursor: pointer;
+    }
+
+    .order-modal-content__text{
+        padding: 0 2rem;
+    }
+
+    @keyframes order-modal-show {
+        from{opacity: 0;}
+        to{opacity: 1;}
+    }
+}

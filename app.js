@@ -142,10 +142,9 @@ const navSideModal = document.querySelector('#side-modal');
 const section = document.querySelector('section');
 const menuHeader = document.querySelector('h1');
 const navBar = document.querySelector('aside:nth-of-type(1)');
-//const plus = document.querySelectorAll('.container div:nth-of-type(3)');
-////const minus = document.querySelectorAll('.container div:nth-of-type(1)');
-//const count = document.querySelectorAll('.container div:nth-of-type(2)');
-let plus, minus, count;
+
+const orderModalCloseButton = document.querySelector('.order-modal-close');
+const orderModal = document.querySelector('.order-modal-container');
 
 let sideModal;
 
@@ -186,36 +185,12 @@ function displayMenu(menuToDisplay){
                     </div>
                 </div>
                </artcile>
-                <div class="counter-container">
-                        <div class="container">
-                            <div class="item">-</div>
-                            <div class="item count">0</div>
-                            <div class="item">+</div>
-                        </div> 
-                        <button class="add-button">Add</button>
-                </div>
         </div>`;
     });
    
     menuItems.innerHTML = newMenu.join('');
-
-    /*Check if the cart is opened previously*/
-    const cart =  document.querySelector('.cart');
-    if(cart!==null && cart.style.display==='flex'){
-        showOrHideCounters('flex');
-        //scanForCounters();
-    } else console.log('cart is not yet opened');   
 }
 
-/*fetch('nav.html')
-.then(res => res.text())
-.then(text => {
-    let oldElement = document.querySelector('#nav-placeholder');
-    let newElement = document.createElement('div');
-    newElement.innerHTML = text;
-    oldElement.parentNode.replaceChild(newElement,oldElement);
- 
-});*/
 const modal = document.querySelector('#modal');
 const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
 const cart = document.querySelector('.modal-bar-list li:last-of-type div');
@@ -261,8 +236,8 @@ closeButton.addEventListener('click',function(){
 });
 
 orderNow.addEventListener('click',function(event){
-    showOrHideCounters('flex');
-    scanForCounters();
+    console.log('Order now');
+    orderModal.style.display='block';
 });
 
 section.addEventListener('click',function(){
@@ -273,87 +248,12 @@ menuHeader.addEventListener('click',function(){
     sideModal.classList.remove('active');
 });
 
-function updateCount(operation,index){
-    console.log('Updating count');
-    //console.log(count);
-    let counter = parseInt(count[index].innerText);
-    if(operation === '+'){
-        counter++;
-    } else{ 
-        if(counter > 0){
-            counter--;
-        }
-    }
-    console.log('counter=',counter);
-    count[index].innerText=counter;
-}
-
-const closeCart = document.querySelector('.cart > div');
-
-closeCart.addEventListener('click',function(){
-    console.log('Close cart');
-     showOrHideCounters('none');
+orderModalCloseButton.addEventListener('click',function(){
+    orderModal.style.display='none';
 });
 
-function scanForCounters(){
-    console.log('display counters');
-    plus = document.querySelectorAll('.container div:nth-of-type(3)');
-    minus = document.querySelectorAll('.container div:nth-of-type(1)');
-    count = document.querySelectorAll('.container div:nth-of-type(2)');
-
-     Array.from(plus).forEach(function(plusButton,index){
-        plusButton.addEventListener('click',function(){
-            console.log('adding for button',index);
-            updateCount('+',index);
-        });
-    });
-    
-    Array.from(minus).forEach(function(minusButton,index){
-        minusButton.addEventListener('click',function(){
-            console.log('minus');
-            updateCount('-',index);
-        });
-    });
-}
-
-function showOrHideCounters(counterStatus){
-    const container = document.querySelectorAll('.container');
-    const counterContainer = document.querySelectorAll('.counter-container');
-    const cart =  document.querySelector('.cart');
-    const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
-
-    cart.style.display= counterStatus;
-    if(cart.style.display === 'flex'){
-        console.log('display cart');
-        console.log('hide order now');
-        orderNow.style.display='none';
-    } else if(cart.style.display='none'){
-        orderNow.style.display='flex';
-        console.log('display order now');
-        resetCount();
-    }else orderNow.style.display=counterStatus;
-
-
-    Array.from(counterContainer).forEach(function(counter){
-        counter.style.display=counterStatus;
-    });
-    
-    Array.from(container).forEach(function(item){
-        item.style.display=counterStatus;
-    });
-}
-
-function setCartStatus(status){
-    const cart =  document.querySelector('.cart');
-    cart.style.display= status;
-}
-
-function resetCount(){
-    console.log('reseting counter');
-     Array.from(count).forEach(counter => {
-        counter.innerText='0';
-    });   
-    Array.from(count).forEach(counter => {
-        console.log(counter.innerText);
-    });   
-}
+window.addEventListener('click',function(event){
+    if(event.target === orderModal){
+        orderModal.style.display='none';
+    }
+});
