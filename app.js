@@ -190,7 +190,7 @@ function displayMenu(menuToDisplay){
     });
    
     menuItems.innerHTML = newMenu.join('');
-    return newMenu;
+    return newMenu.join('');
 }
 
 const burgerMenu = document.querySelector('#burger-menu');
@@ -234,6 +234,34 @@ sideModalCloseButton.addEventListener('click',function(){
 burgerMenu.addEventListener('click',function(){
     console.log('hello');
     sideModalContainer.style.display='flex';
+    const sideModalOrderNow = document.querySelector('#side-modal .side-bar-list li:last-of-type a'); 
+    const menuBar = document.querySelector('.menu-bar');
+
+    sideModalOrderNow.addEventListener('click',function(){
+        sideModalContainer.style.display='none';
+        menuBar.style.display='none';
+        orderModal.style.display='block';
+        /*const menuToDisplay = displayMenu(menu);
+        const displayRoot = document.querySelector('.order-modal-content');
+        displayRoot.innerHTML = menuToDisplay;
+    
+        const listOfFood = document.querySelectorAll('.order-modal-content .item-detail-container .item-text p:nth-of-type(2)');
+    
+        console.log('displayRoot=',listOfFood);
+    
+        Array.from(listOfFood).forEach(function(food){
+            food.addEventListener('click',function(event){
+                console.log(event.target.outerText);
+            });
+        });*/
+        displayMenuInModal();
+        const imageWidth = document.querySelectorAll('.order-modal-content .item-image-container img');
+        console.log(imageWidth);
+    
+        for(image of imageWidth){
+            image.style.width="100%";
+        }
+    });
 });
 
 window.addEventListener('click',function(event){
@@ -245,23 +273,20 @@ window.addEventListener('click',function(event){
 orderNow.addEventListener('click',function(event){
     console.log('Order now');
     orderModal.style.display='block';
-    const menuToDisplay = displayMenu(menu);
+    /*const menuToDisplay = displayMenu(menu);
     const displayRoot = document.querySelector('.order-modal-content');
     displayRoot.innerHTML = menuToDisplay;
 
     const listOfFood = document.querySelectorAll('.order-modal-content .item-detail-container .item-text p:nth-of-type(2)');
-
+  
     console.log('displayRoot=',listOfFood);
 
     Array.from(listOfFood).forEach(function(food){
         food.addEventListener('click',function(event){
             console.log(event.target.outerText);
         });
-    
-    });
-    
-
-
+    });*/
+    displayMenuInModal();
  });
 
 orderModalCloseButton.addEventListener('click',function(){
@@ -278,3 +303,19 @@ window.addEventListener('click',function(event){
         orderModal.style.display='none';
     }
 });
+
+function displayMenuInModal(){
+    const menuToDisplay = displayMenu(menu);
+    const displayRoot = document.querySelector('.order-modal-content');
+    displayRoot.innerHTML = menuToDisplay;
+
+    const listOfFood = document.querySelectorAll('.order-modal-content .item-detail-container .item-text p:nth-of-type(2)');
+  
+    console.log('displayRoot=',listOfFood);
+
+    Array.from(listOfFood).forEach(function(food){
+        food.addEventListener('click',function(event){
+            console.log(event.target.outerText);
+        });
+    });
+}

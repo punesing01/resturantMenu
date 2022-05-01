@@ -1,7 +1,15 @@
 .order-modal-container{
     display: none;
 }
-@media(min-width:911px){
+
+.order-modal-content > div{
+    border: 1px solid gray;
+    margin: 10% auto;
+    box-shadow: 10px 10px 10px lightslategrey;
+    width: 70%;
+}
+ 
+@media(min-width:910px){
     .order-modal-container{
         display:none;
         position: fixed;
@@ -14,7 +22,7 @@
     }
 
     .order-modal-content{
-        width:40%;
+        width:70%;
         margin:10% auto;
         background-color: #E4EBF2;
         padding:2rem;
@@ -45,5 +53,11 @@
     @keyframes order-modal-show {
         from{opacity: 0;}
         to{opacity: 1;}
+    }
+}
+
+@media(min-width:1150px){
+    .order-modal-content > div{
+        width:60%;
     }
 }
