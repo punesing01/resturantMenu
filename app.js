@@ -1,3 +1,4 @@
+ 
 const menu = [
     {
         id:1,
@@ -193,7 +194,8 @@ function displayMenu(menuToDisplay){
 
 const burgerMenu = document.querySelector('#burger-menu');
 const orderNow = document.querySelector('.modal-bar-list li:nth-of-type(5) a');
-const cart = document.querySelector('.modal-bar-list li:last-of-type div');
+//const orderNow = document.querySelector('.burger-menu-bar-list li:nth-of-type(5) a');
+const cart = document.querySelector('.burger-menu-bar-list li:last-of-type div');
 
 sideModal = document.createElement('div');
 const modalList = `
@@ -218,6 +220,15 @@ const modalList = `
                         </div>
                     </div>
                 </div>`;
+
+               /* const modalList = `<pepper-list
+                containerClass="side-modal-container"
+                contentClass="side-modal-content"
+                closeButtonClass="side-modal-close-button"
+                listContainerClass="side-bar-list-container"
+                listClass="side-bar-list"
+                listElementClass=""
+                anchorClass=""></pepper-list>`;*/
 
 sideModal.innerHTML = modalList;
 navSideModal.append(sideModal);
@@ -244,18 +255,23 @@ closeButton.addEventListener('click',function(){
 
 const sideModalCloseButton = document.querySelector('.side-modal-close-button');
 const sideModalContainer = document.querySelector('.side-modal-container');
+//const pepperList = document.querySelector('pepper-list');
+
+//const sideModalCloseButton = pepperList.querySelector('.side-modal-close-button');
+//const sideModalContainer = pepperList.querySelector('.side-modal-container');
 
 sideModalCloseButton.addEventListener('click',function(){
     sideModalContainer.style.display='none';
 });
 
 burgerMenu.addEventListener('click',function(){
+    console.log('hello');
     sideModalContainer.style.display='flex';
 });
 
 window.addEventListener('click',function(event){
     if(event.target == sideModalContainer){
-            sideModalContainer.style.display='none';
+        sideModalContainer.display='none';
     }
 });
 
@@ -269,7 +285,8 @@ orderModalCloseButton.addEventListener('click',function(){
 });
 
 window.addEventListener('click',function(event){
-    if(event.target === orderModal){
-        orderModal.style.display='none';
+    console.log('here');
+    if(event.target === sideModalContainer){
+        sideModalContainer.style.display='none';
     }
 });
