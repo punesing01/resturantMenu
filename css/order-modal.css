@@ -9,17 +9,19 @@
         height:100%;
         top:0;
         left:0;
-        background-color: rgb(0,0,0,0.8);
+        background-color: rgb(0,0,0,0.9);
+        overflow: auto;
     }
 
     .order-modal-content{
-        width:80%;
+        width:40%;
         margin:10% auto;
         background-color: #E4EBF2;
         padding:2rem;
         overflow: auto;
         animation-name: order-modal-show;
         animation-duration: 2s;
+        z-index: 1;
     }
 
     .order-modal-close{
@@ -34,6 +36,10 @@
 
     .order-modal-content__text{
         padding: 0 2rem;
+    }
+    .order-to-cart__container{
+        display:none;
+        background-color: white;
     }
 
     @keyframes order-modal-show {

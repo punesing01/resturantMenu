@@ -126,9 +126,12 @@ nav ul {
 }
 
 footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
     background: linear-gradient(90deg, rgba(241,232,193,1) 9%, rgba(166,135,78,1) 85%);
     margin-top: 1.2rem;
-    padding: 0.8rem;
 }
 
 .footer-list{
@@ -180,6 +183,7 @@ footer{
         gap:5rem;
         justify-content: center;
         flex-wrap: wrap;
+        margin-bottom: 5rem;
     }
 
     .menu-section > div{
