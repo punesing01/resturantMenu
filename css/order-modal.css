@@ -8,8 +8,114 @@
     box-shadow: 10px 10px 10px lightslategrey;
     width: 70%;
 }
- 
-@media(min-width:910px){
+    
+.order-to-cart__container{
+    display:none;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 50%;
+    background-color: white;
+}
+
+.order-to-cart__content {
+    width: 80%;
+    margin: 0 auto;
+ }
+
+ .order-to-cart__content h4 + div{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .counter-container {
+    display:flex;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 0.8rem;
+ }
+
+ .counter-container__div {
+    display:flex;
+    width:12rem;
+    margin-bottom: 1rem;
+  }
+
+ .counter-container + p{
+    font-size: small;
+    color: #390D02;
+ }
+
+ .item {
+    text-align:center;
+    color: #390D02;
+    font-size: large;
+    border:2px solid #A6874E;
+    flex-basis:33.33%;
+    background-color:lightsteelblue;
+  }
+
+  .order-to-cart__container{
+       border: 2px solid #A6874E;
+  }
+
+  .order-to-cart__container span{
+    float: right;
+    font-size: xx-large;
+    color: lightgray;
+    cursor: pointer;
+    font-weight: bold;
+   }    
+
+  .order-to-cart__container h4{
+    margin: 0;
+    text-align: center;
+    padding:20px;
+  }
+
+  .order-details-main__div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .order-details-main__div > p{
+       text-align: center;
+       margin:0;
+       margin-top: 0.4rem;
+       font-size: small;
+  }
+
+  textarea[name="order-details"]{
+      padding:0.8rem;
+  }
+
+  .order-to-cart__button{
+    width: 60%;
+    padding: 0.6rem;
+    font-size: medium;
+    background-color: white;
+    border: 1px solid #A6874E;
+    font-weight: normal;
+    }
+
+ .item {
+    border:2px solid #A6874E;
+    flex-basis:33.33%;
+    background-color:lightsteelblue;
+    text-align:center;
+  }
+
+  .count{
+       background-color: white;
+       border-left: none;
+       border-right:none;
+       color:#A6874E
+  }
+ @media(min-width:910px){
     .order-modal-container{
         display:none;
         position: fixed;
@@ -45,15 +151,18 @@
     .order-modal-content__text{
         padding: 0 2rem;
     }
+
     .order-to-cart__container{
         display:none;
         position: fixed;
         top:30%;
         right:5%;
-        width: 300px;
-        height: 50%;
-        background-color: white;
+        left: auto;
+        transform: none;
     }
+    .order-to-cart__button:hover{
+        box-shadow: 1px 1px 1px 1px #A6874E;
+      }
 
     @keyframes order-modal-show {
         from{opacity: 0;}
