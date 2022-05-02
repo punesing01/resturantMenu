@@ -169,10 +169,6 @@ footer{
     width: 60%;
  }
 
- textarea{
-    display: none;
-}
-
 @media(min-width:910px){
     h1 {
         margin: 5rem 0;
@@ -272,10 +268,33 @@ footer{
          /*margin:0;*/
      }
 
+     .order-to-cart__content {
+        width: 80%;
+        margin: 0 auto;
+     }
+
+     .order-to-cart__content h4 + div{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+     }
+
      .counter-container {
-        display:none;
+        display:flex;
         justify-content: center;
-        margin: 1rem;
+        margin-top: 1rem;
+        padding: 0.8rem;
+     }
+
+     .counter-container__div {
+        display:flex;
+        width:12rem;
+        margin-bottom: 1rem;
+      }
+
+     .counter-container + p{
+        font-size: small;
+        color: #390D02;
      }
 
     .container {
@@ -289,12 +308,73 @@ footer{
          flex-basis:33.33%;
          text-align:center;
          background-color: #A6874E;
-         color: white;
-         font-size: larger;
+         color: #390D02;
+         font-size: large;
        }
 
        .side-modal-container{
            display:none;
+       }
+
+       .order-to-cart__container{
+            border: 2px solid #A6874E;
+       }
+
+       .order-to-cart__container span{
+         float: right;
+         font-size: xx-large;
+         color: lightgray;
+         cursor: pointer;
+         font-weight: bold;
+        }    
+
+       .order-to-cart__container h4{
+         margin: 0;
+         text-align: center;
+         padding:20px;
+       }
+
+       .order-details-main__div{
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+
+       .order-details-main__div > p{
+            text-align: center;
+            margin:0;
+            margin-top: 0.4rem;
+            font-size: small;
+       }
+ 
+      
+  
+
+      .order-to-cart__button{
+        width: 60%;
+        padding: 0.6rem;
+        font-size: medium;
+        background-color: white;
+        border: 1px solid #A6874E;
+        font-weight: normal;
+      }
+      
+      .order-to-cart__button:hover{
+        box-shadow: 1px 1px 1px 1px #A6874E;
+      }
+
+      .item {
+         border:2px solid #A6874E;
+         flex-basis:33.33%;
+         background-color:lightsteelblue;
+         text-align:center;
+       }
+    
+       .count{
+            background-color: white;
+            border-left: none;
+            border-right:none;
+            color:#A6874E
        }
 
        .footer-section{

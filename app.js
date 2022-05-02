@@ -143,9 +143,18 @@ const navSideModal = document.querySelector('#side-modal');
 const section = document.querySelector('section');
 const menuHeader = document.querySelector('h1');
 const navBar = document.querySelector('aside:nth-of-type(1)');
+const orderToCartClose =document.querySelector('.order-to-cart__content span');
+const orderToCartContainer = document.querySelector('.order-to-cart__container');
 
 const orderModalCloseButton = document.querySelector('.order-modal-close');
 const orderModal = document.querySelector('.order-modal-container');
+const plus = document.querySelector('.counter-container__div div:nth-of-type(3)');
+const minus = document.querySelector('.counter-container__div div:nth-of-type(1)');
+const count = document.querySelector('.counter-container__div div:nth-of-type(2)');
+const addToCartButton = document.querySelector('.order-to-cart__button');
+const displayRoot = document.querySelector('.order-modal-content');
+
+let counter = parseInt(count.innerText);
 
 let sideModal;
 
@@ -241,19 +250,7 @@ burgerMenu.addEventListener('click',function(){
         sideModalContainer.style.display='none';
         menuBar.style.display='none';
         orderModal.style.display='block';
-        /*const menuToDisplay = displayMenu(menu);
-        const displayRoot = document.querySelector('.order-modal-content');
-        displayRoot.innerHTML = menuToDisplay;
-    
-        const listOfFood = document.querySelectorAll('.order-modal-content .item-detail-container .item-text p:nth-of-type(2)');
-    
-        console.log('displayRoot=',listOfFood);
-    
-        Array.from(listOfFood).forEach(function(food){
-            food.addEventListener('click',function(event){
-                console.log(event.target.outerText);
-            });
-        });*/
+
         displayMenuInModal();
         const imageWidth = document.querySelectorAll('.order-modal-content .item-image-container img');
         console.log(imageWidth);
@@ -273,19 +270,6 @@ window.addEventListener('click',function(event){
 orderNow.addEventListener('click',function(event){
     console.log('Order now');
     orderModal.style.display='block';
-    /*const menuToDisplay = displayMenu(menu);
-    const displayRoot = document.querySelector('.order-modal-content');
-    displayRoot.innerHTML = menuToDisplay;
-
-    const listOfFood = document.querySelectorAll('.order-modal-content .item-detail-container .item-text p:nth-of-type(2)');
-  
-    console.log('displayRoot=',listOfFood);
-
-    Array.from(listOfFood).forEach(function(food){
-        food.addEventListener('click',function(event){
-            console.log(event.target.outerText);
-        });
-    });*/
     displayMenuInModal();
  });
 
@@ -294,28 +278,83 @@ orderModalCloseButton.addEventListener('click',function(){
 });
 
 window.addEventListener('click',function(event){
-    console.log('here');
-    if(event.target === sideModalContainer){
+     if(event.target === sideModalContainer){
         sideModalContainer.style.display='none';
     }
 
     if(event.target === orderModal){
         orderModal.style.display='none';
     }
+
+    if(event.target === displayRoot | event.target === orderModal){
+        orderToCartContainer.style.display='none';
+    }
 });
 
 function displayMenuInModal(){
     const menuToDisplay = displayMenu(menu);
-    const displayRoot = document.querySelector('.order-modal-content');
     displayRoot.innerHTML = menuToDisplay;
 
-    const listOfFood = document.querySelectorAll('.order-modal-content .item-detail-container .item-text p:nth-of-type(2)');
+    const listOfFood = document.querySelectorAll('.order-modal-content .item-container');
   
     console.log('displayRoot=',listOfFood);
 
     Array.from(listOfFood).forEach(function(food){
         food.addEventListener('click',function(event){
-            console.log(event.target.outerText);
+            const itemName = food.querySelector('.item-detail-container .item-text p:nth-of-type(1)').textContent;
+            const itemPrice=food.querySelector('.item-detail-container .item-text p:nth-of-type(2)').textContent;
+            console.log('itemPrice=',itemPrice);
+            const orderToCartContainer = document.querySelector('.order-to-cart__container');
+            orderToCartContainer.style.display='block';
+            const orderToCartContent = document.querySelector('.order-to-cart__content');
+            const itemHeader = document.querySelector('.order-to-cart__content h4');
+            itemHeader.textContent=itemName;
+            count.innerText='1';
+            counter=1;
+            console.log('counter=',counter);
+            addToCartButton.textContent = `Add - ${itemPrice}`;
         });
     });
 }
+
+orderToCartClose.addEventListener('click',function(){
+    orderToCartContainer.style.display='none'; 
+    counter=1;
+    count.innerText=counter;
+});
+
+
+function addToCartModal(){
+
+}
+
+plus.addEventListener('click',function(){
+  updateCount('+');
+  updatePrice();
+});
+
+minus.addEventListener('click',function(){
+  updateCount('-');
+  updatePrice();
+});
+
+
+function updateCount(operation){
+  if(operation === '+'){
+    counter++;
+  } else{ 
+    if(counter > 0){
+      counter--;
+    }
+  }
+   count.innerText=counter;
+ }
+
+function updatePrice(){
+     const itemDesc = document.querySelector('.order-to-cart__content h4');
+     const itemPrice = menu.filter(function(item){
+         return itemDesc.textContent === item.description? item.price : null; 
+     });
+     console.log(itemPrice[0].price);
+     addToCartButton.textContent = `Add -$${(parseInt(itemPrice[0].price) * counter).toString()}`;
+ }
