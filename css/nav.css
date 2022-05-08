@@ -59,7 +59,7 @@ aside {
     position: fixed;
     top: 0;
     width: 100%;
-  }
+   }
   
   aside nav ul {
     display: none;
@@ -112,7 +112,29 @@ aside {
     cursor: pointer;
   }
 
+  .cart {
+    /*padding: 0 2.42rem;*/
+    color: aliceblue;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
+  .cart > div {
+    color: maroon;
+  }
+
+  .cart-container{
+    padding: 10px;
+    background: brown;
+    border-radius: 100px;
+  }
+
+  .cart svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+  }
 
   @media(min-width:914px){
     h3 {
@@ -176,24 +198,29 @@ aside {
     }
 
     .cart {
-      padding: 0 2.42rem;
+      /*padding: 0 2.42rem;*/
+      padding: 0 2.42rem 1.2rem;
       color: aliceblue;
       display: none;
       flex-direction: column;
       align-items: flex-start;
     }
 
+     .cart > div {
+      color: white;
+    }
+
+    .cart-container{
+      padding: 10px;
+      background: brown;
+      border-radius: 100px;
+    }
+
     .cart svg {
       width: 30px;
       height: 30px;
-      fill: maroon;
+      fill: white;
     }
-
-    /*.close-cart-button{
-      position: absolute;
-      right: 6.8rem;
-      top: 4rem;
-    }*/
   }
 
   @keyframes side-bar-fade-in{
