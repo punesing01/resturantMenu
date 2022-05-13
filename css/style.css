@@ -78,9 +78,9 @@ nav ul {
     border:4px solid #A6874E;
 }
 
-/*.item-container {
-    position: relative;
-}*/
+.item-container {
+    border: none !important;
+}
 
 .item-image-container {
     text-align: center;
