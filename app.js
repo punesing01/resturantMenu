@@ -176,7 +176,7 @@ let editItems;
 let deleteItems;
 let orderModalCloseButton;
 let renderedSideCart;
-
+let itemNumbers = [];
 window.addEventListener('DOMContentLoaded',function(){
      displayMenu(menu);
 });
@@ -344,6 +344,7 @@ function displayMenuInModal(){
             console.log('counter=',counter);
             addToCartButton.textContent = `Add - ${itemPrice}`;
             itemNumber=index; 
+            itemNumbers.push(itemNumber);
         });
     });
 
@@ -368,7 +369,6 @@ minus.addEventListener('click',function(){
   updateCount('-');
   updatePrice();
 });
-
 
 function updateCount(operation){
   if(operation === '+'){
@@ -396,55 +396,58 @@ function updatePrice(){
     const itemPrice =document.querySelector('.order-to-cart__button').textContent.substring(7);
     console.log('itemPrice=',itemPrice);
     console.log('itemChosen=',itemChosen.textContent);
-    const itemKey = itemChosen.textContent;
-    const addItem = {};
-    addItem.itemName = itemChosen.textContent;
-    addItem.itemPrice=itemPrice;
-    addItem.quantity=itemQuantity;
-    addItem.itemPricePerQuantity=itemQuantity > 1? parseInt(parseInt(itemPrice)/parseInt(itemQuantity)):itemPrice;
-    itemsAddedToCart.push(addItem);
-    showToaster('Item has been added to cart.','flex');
-    orderToCartContainer.style.display='none';
-    console.log(itemsAddedToCart);
-
-    const orderedQuantity = document.querySelectorAll('.order-modal-content .item-order-quantity');
-    orderedQuantity[itemNumber].innerText = itemQuantity;
-    orderedQuantity[itemNumber].style.backgroundColor='maroon';
-    orderedQuantity[itemNumber].style.color='white';
-    const itemContainers = document.querySelectorAll('.order-modal-content .item-container');
-    itemContainers[itemNumber].style.border='2px solid maroon';
-    itemContainers[itemNumber].style.boxShadow='none';
     
-    if(!document.querySelector('.side-bar-list .cart')){
-        const sideBarListOrderNow = document.querySelector('.side-bar-list li:nth-of-type(4)');
-        console.log('inserting side cart');
-        const sideCart = `<li><div class="cart">
-                            <div>x</div>
-                            <div class="cart-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"></path></svg>
-                            </div>
-                        </div></li>`;
-        sideBarListOrderNow.insertAdjacentHTML('afterend',sideCart);
-        renderedSideCart = document.querySelector('.side-bar-list .cart');
-        renderedSideCart.style.display='flex';
-
-        renderedSideCart.addEventListener('click',function(){
-            console.log('Cart has been selected');
-
-            const sideModalContainer = document.querySelector('.side-modal-container');
-                 sideModalContainer.style.display='none';
-                 displayOrderDetails();
-             }
-         );
-
-         const sideCartClose = document.querySelector('.side-bar-list .cart div:first-of-type');
-         sideCartClose.addEventListener('click',function(e){
-            let closeFlag = window.confirm('Do you wish to delete your cart?');
-            if(closeFlag){
-                renderedSideCart.style.display='none';
-            }
-         });
-    } else  renderedSideCart.style.display='flex';
+    if(itemQuantity > 0){
+        const itemKey = itemChosen.textContent;
+        const addItem = {};
+        addItem.itemName = itemChosen.textContent;
+        addItem.itemPrice=itemPrice;
+        addItem.quantity=itemQuantity;
+        addItem.itemPricePerQuantity=itemQuantity > 1? parseInt(parseInt(itemPrice)/parseInt(itemQuantity)):itemPrice;
+        itemsAddedToCart.push(addItem);
+        showToaster('Item has been added to cart.','flex');
+        orderToCartContainer.style.display='none';
+        console.log(itemsAddedToCart);
+    
+        const orderedQuantity = document.querySelectorAll('.order-modal-content .item-order-quantity');
+        orderedQuantity[itemNumber].innerText = itemQuantity;
+        orderedQuantity[itemNumber].style.backgroundColor='maroon';
+        orderedQuantity[itemNumber].style.color='white';
+        const itemContainers = document.querySelectorAll('.order-modal-content .item-container');
+        itemContainers[itemNumber].style.border='2px solid maroon';
+        itemContainers[itemNumber].style.boxShadow='none';
+        
+        if(!document.querySelector('.side-bar-list .cart')){
+            const sideBarListOrderNow = document.querySelector('.side-bar-list li:nth-of-type(4)');
+            console.log('inserting side cart');
+            const sideCart = `<li><div class="cart">
+                                <div>&times;</div>
+                                <div class="cart-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"></path></svg>
+                                </div>
+                            </div></li>`;
+            sideBarListOrderNow.insertAdjacentHTML('afterend',sideCart);
+            renderedSideCart = document.querySelector('.side-bar-list .cart');
+            renderedSideCart.style.display='flex';
+    
+            renderedSideCart.addEventListener('click',function(){
+                console.log('Cart has been selected');
+    
+                const sideModalContainer = document.querySelector('.side-modal-container');
+                     sideModalContainer.style.display='none';
+                     displayOrderDetails();
+                 }
+             );
+    
+             const sideCartClose = document.querySelector('.side-bar-list .cart div:first-of-type');
+             sideCartClose.addEventListener('click',function(e){
+                let closeFlag = window.confirm('Do you wish to delete your cart?');
+                if(closeFlag){
+                    renderedSideCart.style.display='none';
+                }
+             });
+        } else  renderedSideCart.style.display='flex';
+    }
  });
 
 function toggleCartAndOrderNowButton(counterStatus){
@@ -559,6 +562,14 @@ function displayOrderDetails(){
             console.log(`${index} item is clicked`);
             console.log(itemsAddedToCart[index]);
             itemsAddedToCart.splice(index,1);
+            
+            const orderedQuantity = document.querySelectorAll('.order-modal-content .item-order-quantity');
+            //Remove the select quantity maroon div from the item.
+            for(let itemNumber of itemNumbers){
+                orderedQuantity[itemNumber].innerText = '';
+                orderedQuantity[itemNumber].style.backgroundColor='#E4EBF2';
+            }
+            
             //re-render again after every delete operation
             displayOrderDetails();
         });
