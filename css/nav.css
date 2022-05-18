@@ -35,7 +35,7 @@ h3 {
   justify-content: inherit;
 }
 
-aside nav {
+.menu-aside nav {
     display: flex;
     justify-content: space-evenly;
     /* padding: 20px;*/
@@ -55,13 +55,13 @@ aside nav {
     border: 2px solid gray;
 }
 
-aside {
+.menu-aside {
     position: fixed;
     top: 0;
     width: 100%;
    }
   
-  aside nav ul {
+  .menu-aside nav ul {
     display: none;
   }
 
@@ -150,11 +150,11 @@ aside {
       display: none;
     }
 
-    aside nav {
+    .menu-aside nav {
       padding: 20px;
     }
 
-    aside nav ul {
+    .menu-aside nav ul {
       display:flex;
       gap:1rem;
       justify-content:flex-end;
@@ -178,6 +178,7 @@ aside {
     .nav-bar-links {
         color: white;
         font-weight: bold;
+        text-decoration: none;
     }
   
     .nav-bar-links:hover {

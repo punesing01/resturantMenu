@@ -165,6 +165,7 @@ const orderSummaryDetails = document.querySelector('.order-summary-details');
 const orderSummaryDetailsHeader=document.querySelector('.order-summary-modal__content h4')
  
 const mainHeader = document.querySelector('h1');
+const ourMenu = document.querySelector('.modal-bar-list li:nth-of-type(3) a');
 
 let counter = parseInt(count.innerText);
 
@@ -498,6 +499,9 @@ closeCart.addEventListener('click',function(){
         const orderSummary = document.querySelector('.order-modal-container > div');
         orderSummary.innerHTML = '';
         //orderModal.style.display='none';
+        orderModal.style.display='none';
+        const menuBar = document.querySelector('.menu-bar');
+        menuBar.style.display='block';
         orderSummaryDetails.innerHTML='';
         itemsAddedToCart=[];
     }

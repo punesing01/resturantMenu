@@ -19,10 +19,11 @@ body {
 
 h1 {
     text-align: center;
-    margin: 11rem 0 2rem 0;
+    margin: 2rem 0;
     text-decoration: underline;
     text-decoration-color: #A6874E;
     text-decoration-style: double;
+    font-size: 1.7rem;
 }
 
 nav {
@@ -48,6 +49,21 @@ nav ul {
     left:0;
     top:0;
     z-index:2;
+}
+
+.about-us{
+    margin: 9rem auto 2rem auto;
+}
+
+.about-us-section{
+    max-width: 1200px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.about-us-section__text{
+    line-height: 1.9rem;
+    font-size: larger;
 }
 
 .menu-bar nav li a {
@@ -260,11 +276,37 @@ nav ul {
     width: 12px;
 }
 
+.separator{
+    background: linear-gradient(90deg, rgba(241,232,193,1) 9%, rgba(166,135,78,1) 85%);;
+    height: 3px;
+}
+
+.location-section{
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.location-map{
+    text-align: center;
+}
+
+.location-section-header{
+    text-align: center;
+    font-size: 1.7rem;
+    margin: 0;
+}
+
+.location-map > iframe {
+    width: 300px;
+    height: 300px;
+    padding: 24px;
+}
+
 footer{
-    position: fixed;
+    /*position: fixed;
     bottom: 0;
     right: 0;
-    left: 0;
+    left: 0;*/
     background: linear-gradient(90deg, rgba(241,232,193,1) 9%, rgba(166,135,78,1) 85%);
     margin-top: 1.2rem;
  }
@@ -306,8 +348,11 @@ footer{
 
 @media(min-width:910px){
     h1 {
-        padding: 1rem 0 0 0 ;
-        margin: 10rem 0 3rem 0;
+        /*padding: 1rem 0 0 0 ;*/
+    }
+
+    .about-us{
+        margin: 13rem auto 2rem auto;
     }
 
     .menu-bar nav {
@@ -525,6 +570,11 @@ footer{
 
     .edit:hover,.delete:hover{
         cursor: pointer;
+    }
+
+    .location-map > iframe {
+        width: 100%;
+        padding: 24px;
     }
 
     .footer-section{

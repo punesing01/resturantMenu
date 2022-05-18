@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Menu</title>
+    <title>Hot & Peppers</title>
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/nav.css" rel="stylesheet">
     <link href="./css/order-modal.css" rel="stylesheet">
 </head>
 <body>
-     <aside>
+     <aside class="menu-aside">
         <nav>
             <div class="logo-name-container">
                 <div class="logo-container">
@@ -25,13 +25,13 @@
             </div>
           <ul class="modal-bar-list">
             <li>
-              <a class="nav-bar-links">Menu</a>
-            </li>
-            <li>
-              <a class="nav-bar-links">Location</a>
-            </li>
-            <li>
               <a class="nav-bar-links">About</a>
+            </li>
+            <li>
+              <a href="#location-section" class="nav-bar-links">Location</a>
+            </li>
+            <li>
+              <a href="#menu-bar-header" class="nav-bar-links">Menu</a>
             </li>
             <li>
               <a class="nav-bar-links">Reserve</a>
@@ -41,7 +41,7 @@
             </li>
             <li>
               <div class="cart">
-                <div>x</div>
+                <div>&times;</div>
                 <div class="cart-container">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"/></svg>
                 </div>
@@ -53,14 +53,32 @@
     <div id="side-modal">
       <!--pepper-list></pepper-list-->
     </div>
-    <h1>Our Menu</h1>
-    <section class="menu-bar">
+    <aside class="about-us">
+      <h1 class="about-us-header">Who we are</h1>
+      <section class="about-us-section">
+        <div class="about-us-section__text">
+          Our journey started in India. Our great grandparents and grandparents moved from kwongdong province in southeastern China to Calcutta India almost a century ago. After living in India for about a decade, they decided to settle there and brought the rest of family from China. Our tradition in Restaurant business started during 1960s with our grandfather opening a restaurant in Kanpur, Uttar Pradesh in India. In 1981, we moved to Sweden where my father started working in a Restaurant in the city of Vastervik. A few years later, my father took over the Restaurant. Later in 1991, my wife and I joined my parents in their Restaurant.
+          In 2000, our family moved again; this time to British Columbia, Canada where we settled down. We entered the restaurant business here in 2003 and have been thriving since then. From our life on three different continents and with over 40 years of experience in restaurant industry, we strive to give a unique fusion cooking experience to our customers here in Cloverdale.
+          We welcome you to join us for lunch or dinner where our friendly staff awaits to serve you.
+        </div>
+      </section>
+    </aside>
+    <div class="separator"></div>
+    <section id="location-section" class="location-section">
+      <h1>Our Vancouver location</h1>
+      <div class="location-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83463.71354769591!2d-123.00844458359374!3d49.1770124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d9b5e244980d%3A0x419bca64a290812b!2sRed%20Hot%20Chili%20Pepper!5e0!3m2!1sen!2sca!4v1652843960780!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+    <div class="separator"></div>
+    <h1 id="menu-bar-header">Our Menu</h1>
+    <section id="menu-bar" class="menu-bar">
         <nav>
             <ul>
-                <li><a data-id="all" href="#">All</a></li>
-                <li><a data-id="breakfast" href="#">Breakfast</a></li>
-                <li><a data-id="lunch" href="#">Lunch</a></li>
-                <li><a data-id="drinks" href="#">Drinks</a></li>
+                <li><a data-id="all" >All</a></li>
+                <li><a data-id="breakfast">Breakfast</a></li>
+                <li><a data-id="lunch">Lunch</a></li>
+                <li><a data-id="drinks">Drinks</a></li>
             </ul>
         </nav>
         <div class="menu-section"></div>
@@ -100,6 +118,7 @@
         <div class="order-summary-details"></div>
       </div>
     </div>
+    
     <footer>
       <section class="footer-section">
         <ul class="footer-list">
