@@ -47,9 +47,9 @@ h3 {
   }
 
 .logo-container{
-    width: 5.2rem;
-    height: 5.2rem;
-    padding: 20px;
+    width: 4rem;
+    height: 4rem;
+    padding: 10px;
     background-color: aliceblue;
     border-radius: 100px;
     border: 2px solid gray;
@@ -162,10 +162,11 @@ h3 {
       align-items: center;
      }
 
-     .logo-container{
+     /*.logo-container{
         width: 6.2rem;
         height: 6.2rem;
-    }
+        padding: 20px;
+    }*/
 
     .logo-name-container{ 
       flex-basis: 0;
